@@ -1,15 +1,13 @@
 package com.jvsbastos.dsmeta.entities;
 
 import javax.persistence.*;
-import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_sales")
-public class Sales implements Serializable {
+public class Sale implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +18,10 @@ public class Sales implements Serializable {
     private Double amount;
     private LocalDate date;
 
-    public Sales() {
+    public Sale() {
     }
 
-    public Sales(Long id, String sellerName, Integer visited, Integer deals, Double amount, LocalDate date) {
+    public Sale(Long id, String sellerName, Integer visited, Integer deals, Double amount, LocalDate date) {
         this.id = id;
         this.sellerName = sellerName;
         this.visited = visited;
@@ -84,7 +82,7 @@ public class Sales implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Sales sales = (Sales) o;
+        Sale sales = (Sale) o;
         return id.equals(sales.id);
     }
 
