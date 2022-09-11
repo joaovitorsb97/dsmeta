@@ -29,14 +29,14 @@ public class SmsService {
 
     public void sendSms(Long saleId) {
 
-        Twilio.init(twilioSid, twilioKey);
-
         Sale sale = saleRepository.findById(saleId).get();
 
         String date =  sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 
         String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
                 + " com um total de R$ " + String.format("%.2f", sale.getAmount());
+
+        Twilio.init(twilioSid, twilioKey);
 
         PhoneNumber to = new PhoneNumber(twilioPhoneTo);
         PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
