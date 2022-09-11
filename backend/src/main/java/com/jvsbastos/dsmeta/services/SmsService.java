@@ -33,13 +33,10 @@ public class SmsService {
 
         Sale sale = saleRepository.findById(saleId).get();
 
-        String date = sale.getDate().getDayOfMonth() + "/" + sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
+        String date =  sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 
-        String msg = "O vendedor " + sale.getSellerName()
-                + " foi destaque em "
-                + date
-                + " vendendo R$"
-                + String.format("%.2f", sale.getAmount()) ;
+        String msg = "O vendedor " + sale.getSellerName() + " foi destaque em " + date
+                + " com um total de R$ " + String.format("%.2f", sale.getAmount());
 
         PhoneNumber to = new PhoneNumber(twilioPhoneTo);
         PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
